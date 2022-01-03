@@ -16,7 +16,7 @@ namespace DoubleBuffer2D
         public T this[int x, int y]
         {
             get => current[x, y];
-            set => next[x, y];
+            set => next[x, y] = value;
         }
 
         public void Clear() => Array.Clear(next, 0, XDim * YDim);
@@ -29,7 +29,7 @@ namespace DoubleBuffer2D
 
         public void Swap()
         {
-            int aux = current;
+            T[,] aux = current;
             current = next;
             next = aux;
         }
